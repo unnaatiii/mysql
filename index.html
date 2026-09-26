@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database</title>
+</head>
+<style>
+    body {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin: 20px;
+        line-height: 1.6;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+    }
+
+    ol {
+        list-style-type: decimal;
+        margin-left: 20px;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    code {
+        background-color: #f4f4f4;
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-family: monospace;
+    }
+</style>
+
+<body>
+    <h1>Database</h1>
+    <ul>
+        <li>Database are the container for data. They are used to store, manage, and retrieve data efficiently.
+
+        </li>
+        <li> Databases can be classified into different types based on their structure and usage, such as relational
+            databases, NoSQL
+            databases,
+            and in-memory databases. Each type has its own advantages and is suitable for different use cases.</li>
+
+        <li>
+
+
+            Querying databases involves using a query language, such as SQL for relational databases, to perform
+            operations like
+            inserting, updating, deleting, and retrieving data. Proper database design and indexing are crucial for
+            optimizing
+            performance and ensuring data integrity.
+        </li>
+    </ul>
+    <h1>SQL</h1>
+    <p>
+        SQL (Structured Query Language) is a standard programming language used for managing and manipulating relational
+        databases. It provides a set of commands and syntax for performing various operations on databases, such as
+        creating tables, inserting data, querying data, updating records, and deleting records.
+    </p>
+    <p>
+        SQL is widely used in database management systems (DBMS) and is essential for developers, data analysts, and
+        database administrators to interact.
+    </p>
+
+    <h1>SQL Queries</h1>
+    <p>
+    <ol>
+        <li> Query for creating a database (named "mydb"):
+            ```sql
+            CREATE DATABASE mydb;
+            ```
+        </li>
+        <li>
+            Query for making a database schema default:
+            ```sql
+            USE mydb;
+            ```
+        </li>
+        <li>
+            Query for creating a database table (named "users") with columns for id, name, email, and created_at:
+            <br>
+            ```sql
+            <br>
+            CREATE TABLE users ( <br>
+
+            id INT PRIMARY KEY,<br>
+            name VARCHAR(100), <br>
+            email VARCHAR(100) UNIQUE, <br>
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP <br>
+            );
+            ```
+        </li>
+        <li>
+            Query for retrieving all records from the "users" table:
+            ```sql
+            SELECT * FROM users;
+            ```
+        </li>
+        <li>
+            Query for retrieving some records from the "users" table:
+            ```sql
+            SELECT id , email FROM users;
+            ```
+        </li>
+    </ol>
+    </p>
+    <h1> Data Types</h1>
+    <ol>
+        <li>INT: Used to store integer values.</li>
+        <li>VARCHAR: Used to store variable-length character strings. VARCHAR(100) means it can store up to 100
+            characters.</li>
+        <li>TEXT: Used to store large amounts of text data.</li>
+        <li>ENUM: A string object with a value chosen from a predefined list of values.</li>
+        <li>DATE: Used to store date values.</li>
+        <li>TIMESTAMP: Used to store date and time values.</li>
+        <li>BOOLEAN: Used to store true/false values.</li>
+    </ol>
+
+    <h1>Constraints</h1>
+    <ol>
+        <li>PRIMARY KEY: Uniquely identifies each record/row in a table.</li>
+        <li>FOREIGN KEY: Establishes a relationship between two tables.</li>
+        <li>UNIQUE: Ensures that all values in a column are unique.</li>
+        <li>NOT NULL: Ensures that a column cannot have a NULL value.</li>
+        <li>CHECK: Ensures that all values in a column satisfy a specific condition.</li>
+        <li>DEFAULT: Sets a default value for a column when no value is specified.</li>
+        <li>AUTO_INCREMENT: automatically generates a unique number for each row.</li>
+    </ol>
+
+    <h1> Working with tables in MySQL</h1>
+    <p>
+    <h3> Selecting All the Records</h3>
+    <p>
+        To select all the records from a table, you can use the SELECT statement with the * wildcard. For example, to
+        select all records from a table named "users", you would use the following query:
+        <br>
+        ```sql
+        SELECT * FROM users;
+        ```
+    </p>
+    <h3> Selecting Specific Columns</h3>
+    <p>
+        If you want to select specific columns from a table, you can specify the column names in the SELECT statement.
+        For example, to select only the "id" and "email" columns from the "Users" table use query:
+        <br>
+        ```sql
+        SELECT id, email FROM users;
+        ```
+    </p>
+    <h3> Renaming a table </h3>
+    <p>
+        To rename a table in MySQL, you can use the RENAME TABLE statement. For example, to rename a table named "users"
+        to "user_profiles", you would use the following query:
+        <br>
+        ```sql
+        RENAME TABLE users TO user_profiles;
+        ```
+    </p>
+    <h3> Altering a table </h3>
+    <p>
+    <ol>
+        <li>To add a new column to a table, you can use the ALTER TABLE statement with the ADD COLUMN clause. For
+            example, to add a new column named "age" of type INT to a table named "users", you would use the following
+            query:
+            <br>
+            ```sql
+            ALTER TABLE users ADD COLUMN age INT;
+            ```
+            <br>
+            ```sql
+            ALTER TABLE users ADD COLUMN is_active BOOLEAN DEFAULT TRUE;
+
+            ```
+        </li>
+     
+        <li>To drop (remove) a column from a table, you can use the ALTER TABLE statement with the DROP COLUMN clause.
+            For example, to remove the "age" column from the "users" table, you would use the following query:
+            <br>
+            ```sql
+            ALTER TABLE users DROP COLUMN age;
+            <br>
+            ```sql
+            ALTER TABLE users DROP COLUMN is_active;
+            ```
+        </li>
+           <li>To modify an existing column in a table, you can use the ALTER TABLE statement with the MODIFY COLUMN
+            clause. For example, to change the data type of the "age" column in the "users" table from INT to
+            VARCHAR(3), you would use the following query:
+            <br>
+            ```sql
+            ALTER TABLE users MODIFY COLUMN age VARCHAR(3);
+            ```
+        </li>
+    </ol>
+    </p>
+<h3> Positioning</h3>
+<ol>
+    <li> To swap the position of two columns in a table, For example, to move the "email" column to be the first column in the
+        "users" table, you would use the following query:
+        <br>
+        ```sql
+        ALTER TABLE users MODIFY COLUMN email VARCHAR(100) FIRST;
+        ```
+    </li>
+    <li> 
+        To move the "email" column to be the column after the 'id' column in the
+        "users" table, you would use the following query <em>(need to specify the data type of the column when using MODIFY COLUMN) </em>:
+        <br>
+        ```sql
+        ALTER TABLE users MODIFY COLUMN email VARCHAR(100) AFTER id;
+        ```
+
+    </li>
+</ol>
+    <p>
+        In MySQL, you can specify the position of a new column when adding it to a table using the FIRST or AFTER
+        keywords in the ALTER TABLE statement. By default, new columns are added to the end of the table.
+    </p>
+    <ol>
+        <li>To add a new column at the beginning of a table, you can use the FIRST keyword. For example, to add a new
+            column named "created_at" of type TIMESTAMP at the beginning of a table named "users", you would use the
+            following query:
+            <br>
+            ```sql
+            ALTER TABLE users ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP FIRST;
+            ```
+        </li>
+        <li>To add a new column after an existing column, you can use the AFTER keyword. For example, to add a new
+            column named "last_login" of type TIMESTAMP after the "email" column in the "users" table, you would use
+            the following query:
+            <br>
+            ```sql
+            ALTER TABLE users ADD COLUMN last_login TIMESTAMP AFTER email;
+            ```
+        </li>
+    </ol>   
+</body>
+
+</html>

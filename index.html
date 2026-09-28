@@ -181,7 +181,7 @@
 
             ```
         </li>
-     
+
         <li>To drop (remove) a column from a table, you can use the ALTER TABLE statement with the DROP COLUMN clause.
             For example, to remove the "age" column from the "users" table, you would use the following query:
             <br>
@@ -192,7 +192,7 @@
             ALTER TABLE users DROP COLUMN is_active;
             ```
         </li>
-           <li>To modify an existing column in a table, you can use the ALTER TABLE statement with the MODIFY COLUMN
+        <li>To modify an existing column in a table, you can use the ALTER TABLE statement with the MODIFY COLUMN
             clause. For example, to change the data type of the "age" column in the "users" table from INT to
             VARCHAR(3), you would use the following query:
             <br>
@@ -202,25 +202,27 @@
         </li>
     </ol>
     </p>
-<h3> Positioning</h3>
-<ol>
-    <li> To swap the position of two columns in a table, For example, to move the "email" column to be the first column in the
-        "users" table, you would use the following query:
-        <br>
-        ```sql
-        ALTER TABLE users MODIFY COLUMN email VARCHAR(100) FIRST;
-        ```
-    </li>
-    <li> 
-        To move the "email" column to be the column after the 'id' column in the
-        "users" table, you would use the following query <em>(need to specify the data type of the column when using MODIFY COLUMN) </em>:
-        <br>
-        ```sql
-        ALTER TABLE users MODIFY COLUMN email VARCHAR(100) AFTER id;
-        ```
+    <h3> Positioning</h3>
+    <ol>
+        <li> To swap the position of two columns in a table, For example, to move the "email" column to be the first
+            column in the
+            "users" table, you would use the following query:
+            <br>
+            ```sql
+            ALTER TABLE users MODIFY COLUMN email VARCHAR(100) FIRST;
+            ```
+        </li>
+        <li>
+            To move the "email" column to be the column after the 'id' column in the
+            "users" table, you would use the following query <em>(need to specify the data type of the column when using
+                MODIFY COLUMN) </em>:
+            <br>
+            ```sql
+            ALTER TABLE users MODIFY COLUMN email VARCHAR(100) AFTER id;
+            ```
 
-    </li>
-</ol>
+        </li>
+    </ol>
     <p>
         In MySQL, you can specify the position of a new column when adding it to a table using the FIRST or AFTER
         keywords in the ALTER TABLE statement. By default, new columns are added to the end of the table.
@@ -242,7 +244,227 @@
             ALTER TABLE users ADD COLUMN last_login TIMESTAMP AFTER email;
             ```
         </li>
-    </ol>   
+    </ol>
+
+    <h1> Querying Data </h1>
+    <p>
+        Querying data in a database involves retrieving specific information from one or more tables based on certain
+        criteria. SQL provides various clauses and operators to filter, sort, and aggregate data. Common clauses used in
+        querying data include WHERE, ORDER BY, GROUP BY, and HAVING.
+    </p>
+    <h3> Filtering Data with WHERE Clause</h3>
+    <p>
+    <ul>
+        <li> The WHERE clause is used to filter records based on specified conditions. For example, to retrieve all
+            users with the name "John" from the "users" table, you would use the following query:
+            <br>
+            ```sql
+            SELECT * FROM users WHERE name = 'John';
+            ```
+        </li>
+
+        <br>
+        <li>
+            For example, to retrieve all users where the "id" is greater than 10 from the "users" table, you would use
+            the following query:
+            <br>
+            ```sql
+            SELECT * FROM users WHERE id > 10;
+            ```
+        </li>
+        <br>
+        <li>
+            For example, to retrieve all users who are not "MALE" from the "users" table, you would use the following
+            query:
+            <br>
+            ```sql
+            SELECT * FROM users WHERE gender != 'MALE';
+            ```
+        </li>
+        <li> To retrieve all users of gender "MALE" & "FEMALE" from the "users" table, you would use the following
+            query:
+            <br>
+            ```sql
+            SELECT * FROM users WHERE gender IN ('Male', 'Female');
+            ```
+        </li>
+        <br>
+    </ul>
+    </p>
+    <h3> Filtering Data with BETWEEN Clause</h3>
+    <p>
+    <ul>
+        <li> To retrieve all users with the date of birth between '1990-01-01' and '2000-12-31' from the "users" table,
+            you would use the following query:
+            <br>
+            ```sql
+            SELECT * FROM users WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31';
+            ```
+        </li>
+        <br>
+    </ul>
+    </p>
+    <h3> Filtering Data with AND/OR Clause</h3>
+    <p>
+    <ul>
+        <li> To retrieve all users that are "FEMALE" with "SALARY" above "70000" from the "users" table,
+            you would use the following query:
+            <br>
+            ```sql
+            SELECT * FROM users WHERE gender = 'FEMALE' AND salary > 70000;
+            ```
+        </li>
+        <br>
+        <li> To retrieve all users that are either "MALE" or have "SALARY" more than "65000" from the "users" table,
+            you would use the following query:
+            <br>
+            ```sql
+            SELECT * FROM users WHERE gender = 'MALE' OR salary > 65000;
+            ```
+        </li>
+        <br>
+    </ul>
+    </p>
+    <h3> Filtering Data with ORDER BY Clause</h3>
+    <p>
+    <ul>
+        <li> To retrieve all users that are either "MALE" or have "SALARY" more than "65000" in ascending order of their
+            Date of Birth from the "users" table,
+            you would use the following query:
+            <br>
+            ```sql
+            SELECT * FROM users WHERE gender = 'MALE' OR salary > 65000 ORDER BY date_of_birth ASC;
+            ```
+        </li>
+        <br>
+    </ul>
+    </p>
+    <h3> Filtering Data with LIMIT Clause</h3>
+    <p>
+    <ul>
+        <li> To retrieve "5 top" users that are either "MALE" or have "SALARY" more than "65000" in ascending order of
+            their Date of Birth from the "users" table ,
+            you would use the following query:
+            <br>
+            ```sql
+            SELECT * FROM users WHERE gender = 'MALE' OR salary > 65000 ORDER BY date_of_birth ASC LIMIT 5;
+            ```
+        </li>
+        <br>
+    </ul>
+    </p>
+    <h1>
+        Functions in SQL</h1>
+    <p>SQL provides various built-in functions to perform operations on data. These functions can be used in SELECT,
+        WHERE, and ORDER BY clauses to manipulate and retrieve data in a more efficient manner.</p>
+    <h3> COUNT Function</h3>
+    <p>
+    <ul>
+        <li> To get a count of all users from the "users" table,
+            you would use the following query:
+            <br>
+            ```sql
+            SELECT COUNT(*) FROM users;
+            ```
+        </li>
+        <br>
+        <li> To get a count of all MALE users from the "users" table,
+            you would use the following query:
+            <br>
+            ```sql
+            SELECT COUNT(*) FROM users WHERE gender = 'MALE';
+            ```
+        </li>
+        <br>
+    </ul>
+    </p>
+    <h3> MIN() MAX() Function</h3>
+    <p>
+    <ul>
+        <li> To get the minimum salary from the "users" table,
+            you would use the following query:
+            <br>
+            ```sql
+            SELECT MIN(salary) FROM users;
+            ```
+        </li>
+        <li> To get the minimum salary from the "users" table in the name Min_Salary,
+            you would use the following query:
+            <br>
+            ```sql
+            SELECT MIN(salary) FROM users AS Min_Salary;
+            ```
+        </li>
+
+        <br>
+        <li> To get the maximum salary from the "users" table,
+            you would use the following query:
+            <br>
+            ```sql
+            SELECT MAX(salary) FROM users;
+            ```
+        </li>
+        <br>
+    </ul>
+    </p>
+    <h3> SUM Function</h3>
+    <p>
+    <ol>
+        <li> To get the sum of all salaries from the "users" table,
+            you would use the following query:
+            <br>
+            ```sql
+            SELECT SUM(salary) FROM users;
+            ```
+        </li>
+
+        <li> To get the sum of all salaries from the "users" table gender wise,
+            you would use the following query:
+            <br>
+            ```sql
+            SELECT SUM(salary) FROM users GROUP BY gender;
+            ```
+        </li>
+        <li> To get the sum of all salaries from the "users" table gender wise, with the group name,
+            you would use the following query:
+            <br>
+            ```sql
+            SELECT gender, SUM(salary) FROM users GROUP BY gender;
+            ```
+        </li>
+        <br>
+    </ol>
+    </p>
+    <h1>AUTOCOMMIT & TRANSACTION</h1>
+    <p>
+        <h3>Disable autocommit</h3>
+      1. To disable the autocommit mode, you can use the following query:
+    <br>
+    ```sql
+    SET autocommit = 0;
+    ```
+    <br>
+    <h3>ROLLBACK</h3>
+    The uncommited changes will be reverted back to the last committed state. Use this to discard changes if somthing goes wrong.
+    <br>
+    ```sql
+    ROLLBACK;
+    ```
+    <br>
+    <h3>COMMIT</h3>
+    To make the final changes permanent in the Database.
+    <br>
+    ```sql
+    COMMIT;
+    ```
+    <br>
+     <h3>Enable Autocommit</h3>
+    To enable the autocommit, run the following query:
+    <br>
+    ```sql
+    SET autocommit=1;
+    ```
+ </p>
 </body>
 
 </html>

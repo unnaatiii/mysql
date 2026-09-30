@@ -40,6 +40,7 @@
 </style>
 
 <body>
+    <!-- database intro section -->
     <h1>Database</h1>
     <ul>
         <li>Database are the container for data. They are used to store, manage, and retrieve data efficiently.
@@ -51,8 +52,6 @@
             and in-memory databases. Each type has its own advantages and is suitable for different use cases.</li>
 
         <li>
-
-
             Querying databases involves using a query language, such as SQL for relational databases, to perform
             operations like
             inserting, updating, deleting, and retrieving data. Proper database design and indexing are crucial for
@@ -60,6 +59,7 @@
             performance and ensuring data integrity.
         </li>
     </ul>
+<!-- SQL section  -->
     <h1>SQL</h1>
     <p>
         SQL (Structured Query Language) is a standard programming language used for managing and manipulating relational
@@ -70,49 +70,38 @@
         SQL is widely used in database management systems (DBMS) and is essential for developers, data analysts, and
         database administrators to interact.
     </p>
-
+ <!-- writing SQL Queries -->
     <h1>SQL Queries</h1>
     <p>
     <ol>
         <li> Query for creating a database (named "mydb"):
-            ```sql
-            CREATE DATABASE mydb;
-            ```
+            <pre><code>CREATE DATABASE mydb;</code></pre>
         </li>
         <li>
             Query for making a database schema default:
-            ```sql
-            USE mydb;
-            ```
+            <pre><code>USE mydb;</code></pre>
         </li>
         <li>
             Query for creating a database table (named "users") with columns for id, name, email, and created_at:
             <br>
-            ```sql
-            <br>
-            CREATE TABLE users ( <br>
-
-            id INT PRIMARY KEY,<br>
-            name VARCHAR(100), <br>
-            email VARCHAR(100) UNIQUE, <br>
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP <br>
-            );
-            ```
+            <pre><code>CREATE TABLE users (
+            id INT PRIMARY KEY,
+            name VARCHAR(100),
+            email VARCHAR(100) UNIQUE,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );</code></pre>
         </li>
         <li>
             Query for retrieving all records from the "users" table:
-            ```sql
-            SELECT * FROM users;
-            ```
+            <pre><code>SELECT * FROM users; </code></pre>
         </li>
         <li>
             Query for retrieving some records from the "users" table:
-            ```sql
-            SELECT id , email FROM users;
-            ```
+            <pre><code>SELECT id , email FROM users; </code></pre>
         </li>
     </ol>
     </p>
+    <!-- Data types in SQL section-->
     <h1> Data Types</h1>
     <ol>
         <li>INT: Used to store integer values.</li>
@@ -124,7 +113,7 @@
         <li>TIMESTAMP: Used to store date and time values.</li>
         <li>BOOLEAN: Used to store true/false values.</li>
     </ol>
-
+<!-- Constraints section -->
     <h1>Constraints</h1>
     <ol>
         <li>PRIMARY KEY: Uniquely identifies each record/row in a table.</li>
@@ -135,35 +124,28 @@
         <li>DEFAULT: Sets a default value for a column when no value is specified.</li>
         <li>AUTO_INCREMENT: automatically generates a unique number for each row.</li>
     </ol>
-
+<!-- Working with tables in MySQL section-->
     <h1> Working with tables in MySQL</h1>
     <p>
     <h3> Selecting All the Records</h3>
     <p>
         To select all the records from a table, you can use the SELECT statement with the * wildcard. For example, to
         select all records from a table named "users", you would use the following query:
-        <br>
-        ```sql
-        SELECT * FROM users;
-        ```
+    <pre><code>SELECT * FROM users;</code></pre>
     </p>
     <h3> Selecting Specific Columns</h3>
     <p>
         If you want to select specific columns from a table, you can specify the column names in the SELECT statement.
         For example, to select only the "id" and "email" columns from the "Users" table use query:
         <br>
-        ```sql
-        SELECT id, email FROM users;
-        ```
+    <pre><code>SELECT id, email FROM users;</code></pre>
     </p>
     <h3> Renaming a table </h3>
     <p>
         To rename a table in MySQL, you can use the RENAME TABLE statement. For example, to rename a table named "users"
         to "user_profiles", you would use the following query:
         <br>
-        ```sql
-        RENAME TABLE users TO user_profiles;
-        ```
+    <pre><code>RENAME TABLE users TO user_profiles;</code></pre>
     </p>
     <h3> Altering a table </h3>
     <p>
@@ -171,34 +153,24 @@
         <li>To add a new column to a table, you can use the ALTER TABLE statement with the ADD COLUMN clause. For
             example, to add a new column named "age" of type INT to a table named "users", you would use the following
             query:
+            <pre><code>ALTER TABLE users ADD COLUMN age INT;</code></pre>
             <br>
-            ```sql
-            ALTER TABLE users ADD COLUMN age INT;
-            ```
-            <br>
-            ```sql
-            ALTER TABLE users ADD COLUMN is_active BOOLEAN DEFAULT TRUE;
+            <pre><code>ALTER TABLE users ADD COLUMN is_active BOOLEAN DEFAULT TRUE;</code></pre>
 
             ```
         </li>
 
         <li>To drop (remove) a column from a table, you can use the ALTER TABLE statement with the DROP COLUMN clause.
             For example, to remove the "age" column from the "users" table, you would use the following query:
+            <pre><code>ALTER TABLE users DROP COLUMN age;</code></pre>
             <br>
-            ```sql
-            ALTER TABLE users DROP COLUMN age;
-            <br>
-            ```sql
-            ALTER TABLE users DROP COLUMN is_active;
+            <pre><code>ALTER TABLE users DROP COLUMN is_active;</code></pre>
             ```
         </li>
         <li>To modify an existing column in a table, you can use the ALTER TABLE statement with the MODIFY COLUMN
             clause. For example, to change the data type of the "age" column in the "users" table from INT to
             VARCHAR(3), you would use the following query:
-            <br>
-            ```sql
-            ALTER TABLE users MODIFY COLUMN age VARCHAR(3);
-            ```
+            <pre><code>ALTER TABLE users MODIFY COLUMN age VARCHAR(3);</code></pre>
         </li>
     </ol>
     </p>
@@ -207,19 +179,14 @@
         <li> To swap the position of two columns in a table, For example, to move the "email" column to be the first
             column in the
             "users" table, you would use the following query:
-            <br>
-            ```sql
-            ALTER TABLE users MODIFY COLUMN email VARCHAR(100) FIRST;
-            ```
+            <pre><code>ALTER TABLE users MODIFY COLUMN email VARCHAR(100) FIRST;</code></pre>
         </li>
         <li>
             To move the "email" column to be the column after the 'id' column in the
             "users" table, you would use the following query <em>(need to specify the data type of the column when using
                 MODIFY COLUMN) </em>:
             <br>
-            ```sql
-            ALTER TABLE users MODIFY COLUMN email VARCHAR(100) AFTER id;
-            ```
+            <pre><code>ALTER TABLE users MODIFY COLUMN email VARCHAR(100) AFTER id;</code></pre>
 
         </li>
     </ol>
@@ -232,17 +199,12 @@
             column named "created_at" of type TIMESTAMP at the beginning of a table named "users", you would use the
             following query:
             <br>
-            ```sql
-            ALTER TABLE users ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP FIRST;
-            ```
+            <pre><code>ALTER TABLE users ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP FIRST;</code></pre>
         </li>
         <li>To add a new column after an existing column, you can use the AFTER keyword. For example, to add a new
             column named "last_login" of type TIMESTAMP after the "email" column in the "users" table, you would use
             the following query:
-            <br>
-            ```sql
-            ALTER TABLE users ADD COLUMN last_login TIMESTAMP AFTER email;
-            ```
+            <pre><code>ALTER TABLE users ADD COLUMN last_login TIMESTAMP AFTER email;</code></pre>
         </li>
     </ol>
 
@@ -258,9 +220,7 @@
         <li> The WHERE clause is used to filter records based on specified conditions. For example, to retrieve all
             users with the name "John" from the "users" table, you would use the following query:
             <br>
-            ```sql
-            SELECT * FROM users WHERE name = 'John';
-            ```
+            <pre><code>SELECT * FROM users WHERE name = 'John';</code></pre>
         </li>
 
         <br>
@@ -268,25 +228,17 @@
             For example, to retrieve all users where the "id" is greater than 10 from the "users" table, you would use
             the following query:
             <br>
-            ```sql
-            SELECT * FROM users WHERE id > 10;
-            ```
+            <pre><code>SELECT * FROM users WHERE id > 10;</code></pre>
         </li>
         <br>
         <li>
             For example, to retrieve all users who are not "MALE" from the "users" table, you would use the following
             query:
-            <br>
-            ```sql
-            SELECT * FROM users WHERE gender != 'MALE';
-            ```
+            <pre><code>SELECT * FROM users WHERE gender != 'MALE';</code></pre>
         </li>
         <li> To retrieve all users of gender "MALE" & "FEMALE" from the "users" table, you would use the following
             query:
-            <br>
-            ```sql
-            SELECT * FROM users WHERE gender IN ('Male', 'Female');
-            ```
+            <pre><code>SELECT * FROM users WHERE gender IN ('Male', 'Female');</code></pre>
         </li>
         <br>
     </ul>
@@ -296,10 +248,7 @@
     <ul>
         <li> To retrieve all users with the date of birth between '1990-01-01' and '2000-12-31' from the "users" table,
             you would use the following query:
-            <br>
-            ```sql
-            SELECT * FROM users WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31';
-            ```
+            <pre><code>SELECT * FROM users WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31';</code></pre>
         </li>
         <br>
     </ul>
@@ -309,18 +258,12 @@
     <ul>
         <li> To retrieve all users that are "FEMALE" with "SALARY" above "70000" from the "users" table,
             you would use the following query:
-            <br>
-            ```sql
-            SELECT * FROM users WHERE gender = 'FEMALE' AND salary > 70000;
-            ```
+            <pre><code>SELECT * FROM users WHERE gender = 'FEMALE' AND salary > 70000;</code></pre>
         </li>
         <br>
         <li> To retrieve all users that are either "MALE" or have "SALARY" more than "65000" from the "users" table,
             you would use the following query:
-            <br>
-            ```sql
-            SELECT * FROM users WHERE gender = 'MALE' OR salary > 65000;
-            ```
+            <pre><code>SELECT * FROM users WHERE gender = 'MALE' OR salary > 65000;</code></pre>
         </li>
         <br>
     </ul>
@@ -331,10 +274,7 @@
         <li> To retrieve all users that are either "MALE" or have "SALARY" more than "65000" in ascending order of their
             Date of Birth from the "users" table,
             you would use the following query:
-            <br>
-            ```sql
-            SELECT * FROM users WHERE gender = 'MALE' OR salary > 65000 ORDER BY date_of_birth ASC;
-            ```
+            <pre><code>SELECT * FROM users WHERE gender = 'MALE' OR salary > 65000 ORDER BY date_of_birth ASC;</code></pre>
         </li>
         <br>
     </ul>
@@ -345,10 +285,7 @@
         <li> To retrieve "5 top" users that are either "MALE" or have "SALARY" more than "65000" in ascending order of
             their Date of Birth from the "users" table ,
             you would use the following query:
-            <br>
-            ```sql
-            SELECT * FROM users WHERE gender = 'MALE' OR salary > 65000 ORDER BY date_of_birth ASC LIMIT 5;
-            ```
+            <pre><code>SELECT * FROM users WHERE gender = 'MALE' OR salary > 65000 ORDER BY date_of_birth ASC LIMIT 5;</code></pre>
         </li>
         <br>
     </ul>
@@ -362,18 +299,12 @@
     <ul>
         <li> To get a count of all users from the "users" table,
             you would use the following query:
-            <br>
-            ```sql
-            SELECT COUNT(*) FROM users;
-            ```
+            <pre><code>SELECT COUNT(*) FROM users;</code></pre>
         </li>
         <br>
         <li> To get a count of all MALE users from the "users" table,
             you would use the following query:
-            <br>
-            ```sql
-            SELECT COUNT(*) FROM users WHERE gender = 'MALE';
-            ```
+            <pre><code>SELECT COUNT(*) FROM users WHERE gender = 'MALE';</code></pre>
         </li>
         <br>
     </ul>
@@ -383,26 +314,16 @@
     <ul>
         <li> To get the minimum salary from the "users" table,
             you would use the following query:
-            <br>
-            ```sql
-            SELECT MIN(salary) FROM users;
-            ```
+            <pre><code>SELECT MIN(salary) FROM users;</code></pre>
+
         </li>
         <li> To get the minimum salary from the "users" table in the name Min_Salary,
             you would use the following query:
-            <br>
-            ```sql
-            SELECT MIN(salary) FROM users AS Min_Salary;
-            ```
+            <pre><code>SELECT MIN(salary) FROM users AS Min_Salary;</code> </pre>
         </li>
-
-        <br>
         <li> To get the maximum salary from the "users" table,
             you would use the following query:
-            <br>
-            ```sql
-            SELECT MAX(salary) FROM users;
-            ```
+            <pre><code>SELECT MAX(salary) FROM users;/ </code></pre>
         </li>
         <br>
     </ul>
@@ -412,59 +333,97 @@
     <ol>
         <li> To get the sum of all salaries from the "users" table,
             you would use the following query:
-            <br>
-            ```sql
-            SELECT SUM(salary) FROM users;
-            ```
+            <pre> <code>  SELECT SUM(salary) FROM users; </code></pre>
+
+
+
         </li>
 
         <li> To get the sum of all salaries from the "users" table gender wise,
             you would use the following query:
-            <br>
-            ```sql
-            SELECT SUM(salary) FROM users GROUP BY gender;
-            ```
+            <pre> <code>SELECT SUM(salary) FROM users GROUP BY gender; </code></pre>
+
+
         </li>
         <li> To get the sum of all salaries from the "users" table gender wise, with the group name,
             you would use the following query:
-            <br>
-            ```sql
-            SELECT gender, SUM(salary) FROM users GROUP BY gender;
-            ```
+            <pre> <code> SELECT gender, SUM(salary) FROM users GROUP BY gender; </code></pre>
+
         </li>
         <br>
     </ol>
     </p>
     <h1>AUTOCOMMIT & TRANSACTION</h1>
     <p>
-        <h3>Disable autocommit</h3>
-      1. To disable the autocommit mode, you can use the following query:
-    <br>
-    ```sql
-    SET autocommit = 0;
-    ```
-    <br>
+    <h3>Disable autocommit</h3>
+    1. To disable the autocommit mode, you can use the following query:
+    <pre><code>SET autocommit = 0;</code></pre>
     <h3>ROLLBACK</h3>
-    The uncommited changes will be reverted back to the last committed state. Use this to discard changes if somthing goes wrong.
-    <br>
-    ```sql
-    ROLLBACK;
-    ```
-    <br>
+    The uncommited changes will be reverted back to the last committed state. Use this to discard changes if somthing
+    goes wrong.
+    <pre><code>ROLLBACK;</code></pre>
+  
     <h3>COMMIT</h3>
     To make the final changes permanent in the Database.
-    <br>
-    ```sql
-    COMMIT;
-    ```
-    <br>
-     <h3>Enable Autocommit</h3>
+    <pre><code>COMMIT;</code></pre>
+
+    <h3>Enable Autocommit</h3>
     To enable the autocommit, run the following query:
-    <br>
-    ```sql
-    SET autocommit=1;
-    ```
- </p>
+    <pre><code>SET autocommit=1;</code></pre>
+    </p>
+    <!-- Primary Key and Unique section  -->
+    <section>
+        <h1>Primary Key and UNIQUE Constraints</h1>
+        <h3>Primary Key</h3>
+        <p>A primary key is a column or a combination of columns that <em>uniquely identifies each row </em> in a table.
+            <br>
+            If you want to identify a record uniquely, you need to have a column that has a unique element, on basis of which you can seperate a user/value.  A table can have only one primary key,
+            and it cannot contain NULL values. Hence we use <strong>Primary Key </strong> constraint with that element to identify a record uniquely.
+        </p>
+       <u> Some characteristics of Primary Key:</u>
+        <ul>
+            <li>Is always <strong>Unique</strong></li>
+            <li>Cannot be <strong>Null</strong></li>
+            <li>Each table can have <strong>only one</strong> Primary Key </li>
+        </ul>
+
+        <h3>UNIQUE Constraint</h3>
+        <p>A UNIQUE constraint ensures that all values in a column are different.</p>
+<h3> How is PRIMARY KEY different from UNIQUE Constraint?</h3>
+        <p>Both PRIMARY KEY and UNIQUE constraints enforce uniqueness in a column or a set of columns. <u>However, there are some differences between them: </u> </p>
+        <ul>
+            <li>A table can have <em> only one</em> PRIMARY KEY, but it can have <em> multiple </em> UNIQUE constraints.</li>
+            <li>PRIMARY KEY columns cannot contain NULL values, while UNIQUE columns can contain NULL values (but only one NULL value is allowed).</li>
+            <li>PRIMARY KEY is used to uniquely identify each row in a table, while UNIQUE is used to ensure that values in a column are unique.</li>
+            <li>It is recommended to use a PRIMARY KEY in order to uniquely identify rows, while UNIQUE may or may not be used</li>
+            <li>It cannot be easily dropped, this may even fail if it is used elsewhere, while UNIQUE may be dropped more easily</li>
+        </ul>
+    </section>
+    <!-- auto increment constraint section  -->
+    <section>
+        <h1>Auto Increment Constraint</h1>
+        <p>The
+    auto increment constraint is used to automatically generate a unique number for each row in a table. It is often used for primary key columns to ensure that each row has a unique identifier. When a new row is inserted into the table, the auto increment column will automatically be assigned the next available value, without the need for manual input. </p>
+        <p>To create an auto increment column, you can use the AUTO_INCREMENT keyword in the CREATE TABLE statement. For example, to create a table named "users" with an auto increment column named "id", you would use the following query:</p>
+        <pre><code>CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE;)
+</code></pre>
+        <p>In this example, the "id" column is defined as an auto increment column, and it will automatically generate a unique value for each new row inserted into the "users" table.</p>
+
+        <p> We can also change the starting value of the auto increment column using the ALTER TABLE statement.</p>
+        <pre><code>ALTER TABLE users AUTO_INCREMENT = 1000;</code></pre>
+        </SECtion>
+
+        <!-- Foreign Key section -->
+        <section>
+            <h1>Foreign Key Constraint</h1>
+            <p>A foreign key is a column or a set of columns in one table that refers to the primary key in another table. It establishes a relationship between two tables and ensures referential integrity. The foreign key constraint enforces that the values in the foreign key column(s) must match the values in the referenced primary key column(s) or be NULL.</p>
+            <p>To create a foreign key constraint, you can use the FOREIGN KEY keyword in the CREATE TABLE statement. For example, to create a table named "orders" with a foreign key column named "user_id" that references the "id" column in the "users" table, you would use the following query:</p>
+            <pre><code>CREATE TABLE orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+
 </body>
 
 </html>
